@@ -1,7 +1,7 @@
 #!groovy
 pipeline {
     agent {
-        label 'codebuild'
+        label 'codebuild',
         docker { image 'node:7-alpine' }
     }
     stages {
