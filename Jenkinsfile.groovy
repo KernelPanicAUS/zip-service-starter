@@ -1,5 +1,10 @@
-node {
-    try {
+pipeline{
+    agent {
+        label 'codebuilder'
+        docker { image 'node:7-alpine' }
+    }
+    stages {
+        try {
         def image
         def workspace = sh(returnStdout: true, script: 'pwd').trim()
         def m2 = "/tmp/m2"
@@ -46,5 +51,6 @@ node {
         junit 'target/surefire-reports/**/*.xml'
         junit 'target/failsafe-reports/**/*.xml'
         step([$class: 'JacocoPublisher'])
+    }
     }
 }
