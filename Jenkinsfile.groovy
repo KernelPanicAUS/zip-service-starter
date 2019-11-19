@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'codebuilder'
+        label 'codebuild'
         docker { image 'node:7-alpine' }
     }
     stages {
