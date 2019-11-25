@@ -1,10 +1,11 @@
-#!groovy
 pipeline {
-    agent { label 'codebuilder' }
+    agent {
+        docker { image 'node:7-alpine' }
+    }
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'npm --version'
+                sh 'node --version'
             }
         }
     }
